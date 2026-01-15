@@ -35,8 +35,8 @@ const Stone = memo(function Stone({
           className="w-full h-full rounded-full opacity-40"
           style={{
             background: color === 'white'
-              ? 'radial-gradient(circle at 30% 30%, #FFFCF2, #FFE66D)'
-              : 'radial-gradient(circle at 30% 30%, #5C6BC0, #2C3E50)',
+              ? 'radial-gradient(circle at 30% 30%, #FFFFFF, #E0E0E0)'
+              : 'radial-gradient(circle at 30% 30%, #4A4A4A, #1A1A1A)',
           }}
         />
         {/* キラキラドット */}
@@ -89,20 +89,20 @@ const Stone = memo(function Stone({
     )
   }
 
-  // 光の魔法石（白）のスタイル
+  // 光の魔法石（白）のスタイル - 白ベースに控えめなグロー
   const lightStoneStyle = {
-    background: 'radial-gradient(circle at 30% 30%, #FFFCF2 0%, #FFE66D 70%, #F59E0B 100%)',
+    background: 'radial-gradient(circle at 30% 30%, #FFFFFF 0%, #F0F0F0 70%, #E0E0E0 100%)',
     boxShadow: isGlowing
-      ? '0 0 20px 10px rgba(255, 230, 109, 0.7), 0 4px 12px rgba(255, 230, 109, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.1)'
-      : '0 4px 12px rgba(255, 230, 109, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.1)',
+      ? '0 0 12px 6px rgba(255, 255, 255, 0.5), 0 4px 12px rgba(200, 200, 200, 0.4), inset 0 -4px 8px rgba(0, 0, 0, 0.1)'
+      : '0 4px 12px rgba(200, 200, 200, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.1)',
   }
 
-  // 影の魔法石（黒）のスタイル
+  // 影の魔法石（黒）のスタイル - 黒ベースにパープルのグロー
   const darkStoneStyle = {
-    background: 'radial-gradient(circle at 30% 30%, #7C8CDB 0%, #5C6BC0 40%, #2C3E50 100%)',
+    background: 'radial-gradient(circle at 30% 30%, #4A4A4A 0%, #2D2D2D 40%, #1A1A1A 100%)',
     boxShadow: isGlowing
       ? '0 0 20px 10px rgba(92, 107, 192, 0.7), 0 4px 12px rgba(92, 107, 192, 0.5), inset 0 -4px 8px rgba(0, 0, 0, 0.2)'
-      : '0 4px 12px rgba(92, 107, 192, 0.3), inset 0 -4px 8px rgba(0, 0, 0, 0.2)',
+      : '0 4px 12px rgba(0, 0, 0, 0.4), inset 0 -4px 8px rgba(0, 0, 0, 0.2)',
   }
 
   const stoneStyle = color === 'white' ? lightStoneStyle : darkStoneStyle
@@ -155,8 +155,8 @@ const Stone = memo(function Stone({
             }}
             style={{
               background: color === 'white'
-                ? 'radial-gradient(circle, rgba(255, 230, 109, 0.4) 0%, transparent 70%)'
-                : 'radial-gradient(circle, rgba(92, 107, 192, 0.4) 0%, transparent 70%)',
+                ? 'radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%)'
+                : 'radial-gradient(circle, rgba(92, 107, 192, 0.5) 0%, transparent 70%)',
             }}
           />
         )}

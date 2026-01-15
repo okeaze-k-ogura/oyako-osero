@@ -18,15 +18,15 @@ const PlayerInfo = memo(function PlayerInfo({
   count,
   isCurrentTurn,
 }: PlayerInfoProps) {
-  // 魔法石のスタイル
+  // 魔法石のスタイル - 白黒ベース
   const stoneStyle = stoneColor === 'white'
     ? {
-        background: 'radial-gradient(circle at 30% 30%, #FFFCF2 0%, #FFE66D 100%)',
-        boxShadow: '0 2px 6px rgba(255, 230, 109, 0.5)',
+        background: 'radial-gradient(circle at 30% 30%, #FFFFFF 0%, #E0E0E0 100%)',
+        boxShadow: '0 2px 6px rgba(200, 200, 200, 0.5)',
       }
     : {
-        background: 'radial-gradient(circle at 30% 30%, #5C6BC0 0%, #2C3E50 100%)',
-        boxShadow: '0 2px 6px rgba(92, 107, 192, 0.5)',
+        background: 'radial-gradient(circle at 30% 30%, #4A4A4A 0%, #1A1A1A 100%)',
+        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.5)',
       }
 
   return (
