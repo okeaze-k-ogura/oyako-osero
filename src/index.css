@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-kids-bg-cream text-gray-800;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+  }
+}
+
+@layer components {
+  .btn-kids {
+    @apply min-w-touch min-h-touch px-6 py-3 text-kids-lg font-bold rounded-kids shadow-kids transition-all;
+    @apply focus:outline-none focus:ring-4 focus:ring-kids-secondary-300 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn-kids bg-kids-primary-400 text-gray-800 hover:bg-kids-primary-300 active:bg-kids-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn-kids bg-white text-gray-700 border-2 border-gray-200 hover:border-kids-secondary-300;
+  }
+}
+
+@layer utilities {
+  .stone-glow-white {
+    animation: glow-white 2s ease-in-out infinite;
+  }
+
+  .stone-glow-black {
+    animation: glow-black 2s ease-in-out infinite;
+  }
+
+  @keyframes glow-white {
+    0%, 100% {
+      box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  @keyframes glow-black {
+    0%, 100% {
+      box-shadow: 0 0 8px 4px rgba(100, 149, 237, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px 8px rgba(100, 149, 237, 0.8);
+    }
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
