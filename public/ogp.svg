@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- 背景グラデーション（魔法の森） -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1B4332"/>
+      <stop offset="50%" style="stop-color:#2D6A4F"/>
+      <stop offset="100%" style="stop-color:#40916C"/>
+    </linearGradient>
+    <!-- 光のグラデーション -->
+    <radialGradient id="glowGradient" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#95D5B2;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#1B4332;stop-opacity:0"/>
+    </radialGradient>
+    <!-- オセロ駒の影 -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="3" stdDeviation="5" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  <rect width="1200" height="630" fill="url(#glowGradient)"/>
+
+  <!-- 装飾的な光の粒子 -->
+  <circle cx="100" cy="100" r="3" fill="#95D5B2" opacity="0.6"/>
+  <circle cx="200" cy="200" r="2" fill="#95D5B2" opacity="0.4"/>
+  <circle cx="1050" cy="150" r="4" fill="#95D5B2" opacity="0.5"/>
+  <circle cx="1100" cy="400" r="2" fill="#95D5B2" opacity="0.6"/>
+  <circle cx="150" cy="500" r="3" fill="#95D5B2" opacity="0.4"/>
+  <circle cx="950" cy="80" r="2" fill="#95D5B2" opacity="0.5"/>
+  <circle cx="300" cy="550" r="3" fill="#95D5B2" opacity="0.3"/>
+  <circle cx="850" cy="520" r="2" fill="#95D5B2" opacity="0.4"/>
+
+  <!-- オセロボード（簡略化） -->
+  <g transform="translate(750, 200)" filter="url(#shadow)">
+    <!-- ボード背景 -->
+    <rect x="0" y="0" width="320" height="320" rx="16" fill="#1B4332" stroke="#95D5B2" stroke-width="3"/>
+
+    <!-- グリッド線 -->
+    <g stroke="#2D6A4F" stroke-width="1">
+      <line x1="80" y1="0" x2="80" y2="320"/>
+      <line x1="160" y1="0" x2="160" y2="320"/>
+      <line x1="240" y1="0" x2="240" y2="320"/>
+      <line x1="0" y1="80" x2="320" y2="80"/>
+      <line x1="0" y1="160" x2="320" y2="160"/>
+      <line x1="0" y1="240" x2="320" y2="240"/>
+    </g>
+
+    <!-- オセロの駒 -->
+    <!-- 白い駒 -->
+    <circle cx="120" cy="120" r="30" fill="#FFFCF2" stroke="#E8E4D9" stroke-width="2"/>
+    <circle cx="200" cy="200" r="30" fill="#FFFCF2" stroke="#E8E4D9" stroke-width="2"/>
+    <circle cx="40" cy="200" r="30" fill="#FFFCF2" stroke="#E8E4D9" stroke-width="2"/>
+    <circle cx="280" cy="120" r="30" fill="#FFFCF2" stroke="#E8E4D9" stroke-width="2"/>
+
+    <!-- 黒い駒 -->
+    <circle cx="200" cy="120" r="30" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+    <circle cx="120" cy="200" r="30" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+    <circle cx="40" cy="40" r="30" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+    <circle cx="280" cy="280" r="30" fill="#2C3E50" stroke="#1A252F" stroke-width="2"/>
+
+    <!-- 駒の光沢 -->
+    <ellipse cx="112" cy="112" rx="12" ry="8" fill="rgba(255,255,255,0.4)"/>
+    <ellipse cx="192" cy="192" rx="12" ry="8" fill="rgba(255,255,255,0.4)"/>
+    <ellipse cx="192" cy="112" rx="10" ry="6" fill="rgba(255,255,255,0.2)"/>
+    <ellipse cx="112" cy="192" rx="10" ry="6" fill="rgba(255,255,255,0.2)"/>
+  </g>
+
+  <!-- メインタイトル -->
+  <text x="80" y="220" font-family="'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif" font-size="120" font-weight="700" fill="#FFFCF2">
+    おやこ
+  </text>
+  <text x="80" y="350" font-family="'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif" font-size="120" font-weight="700" fill="#FFE66D">
+    オセロ
+  </text>
+
+  <!-- サブタイトル -->
+  <text x="85" y="420" font-family="'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif" font-size="36" fill="#95D5B2">
+    親子で楽しめる無料オセロゲーム
+  </text>
+
+  <!-- タグライン -->
+  <rect x="80" y="470" width="320" height="50" rx="25" fill="#FFE66D"/>
+  <text x="100" y="505" font-family="'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif" font-size="26" font-weight="700" fill="#1B4332">
+    ブラウザで今すぐ無料
+  </text>
+
+  <!-- 対象年齢 -->
+  <rect x="420" y="470" width="180" height="50" rx="25" fill="rgba(255,255,255,0.2)" stroke="#95D5B2" stroke-width="2"/>
+  <text x="440" y="505" font-family="'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif" font-size="26" font-weight="500" fill="#FFFCF2">
+    4〜8歳向け
+  </text>
+
+  <!-- 動物キャラクターアイコン（きつねパパ） -->
+  <g transform="translate(600, 180)">
+    <circle cx="40" cy="40" r="45" fill="#FF9F43"/>
+    <ellipse cx="20" cy="15" rx="12" ry="18" fill="#FF9F43"/>
+    <ellipse cx="60" cy="15" rx="12" ry="18" fill="#FF9F43"/>
+    <ellipse cx="20" cy="10" rx="6" ry="10" fill="#FFFCF2"/>
+    <ellipse cx="60" cy="10" rx="6" ry="10" fill="#FFFCF2"/>
+    <circle cx="28" cy="38" r="6" fill="#2C3E50"/>
+    <circle cx="52" cy="38" r="6" fill="#2C3E50"/>
+    <circle cx="30" cy="36" r="2" fill="#FFFCF2"/>
+    <circle cx="54" cy="36" r="2" fill="#FFFCF2"/>
+    <ellipse cx="40" cy="52" rx="8" ry="5" fill="#2C3E50"/>
+    <path d="M32 60 Q40 68 48 60" stroke="#2C3E50" stroke-width="3" fill="none"/>
+  </g>
+</svg>
