@@ -9,13 +9,48 @@
   }
 
   body {
-    @apply bg-kids-bg-cream text-gray-800;
+    @apply text-forest-deep;
+    background: linear-gradient(180deg, #E0E7FF 0%, #FAF5EF 30%, #D8F3DC 100%);
     overscroll-behavior: none;
     touch-action: manipulation;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 }
 
 @layer components {
+  /* ファンタジーボタン */
+  .btn-fantasy {
+    @apply min-w-touch min-h-touch px-8 py-4 text-kids-lg font-bold rounded-fantasy;
+    @apply bg-gradient-to-b from-light-magic-glow to-light-magic-aura;
+    @apply text-forest-deep shadow-fantasy;
+    @apply border-4 border-light-magic-core;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-4 focus:ring-sky-star/50 focus:ring-offset-2;
+    @apply hover:shadow-fantasy-lg hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-fantasy-secondary {
+    @apply min-w-touch min-h-touch px-6 py-3 text-kids-base font-bold rounded-kids-lg;
+    @apply bg-fantasy-cream text-forest-deep;
+    @apply border-2 border-forest-glow shadow-kids;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-4 focus:ring-forest-glow/50 focus:ring-offset-2;
+    @apply hover:bg-forest-mist hover:scale-105;
+    @apply active:scale-95;
+  }
+
+  .btn-fantasy-ghost {
+    @apply min-w-touch min-h-touch px-4 py-2 text-kids-base font-medium rounded-kids;
+    @apply bg-transparent text-forest-moss;
+    @apply border-2 border-transparent;
+    @apply transition-all duration-200;
+    @apply hover:bg-forest-mist/50 hover:border-forest-glow;
+    @apply active:scale-95;
+  }
+
+  /* レガシーボタン（互換性のため維持） */
   .btn-kids {
     @apply min-w-touch min-h-touch px-6 py-3 text-kids-lg font-bold rounded-kids shadow-kids transition-all;
     @apply focus:outline-none focus:ring-4 focus:ring-kids-secondary-300 focus:ring-offset-2;
@@ -28,9 +63,65 @@
   .btn-secondary {
     @apply btn-kids bg-white text-gray-700 border-2 border-gray-200 hover:border-kids-secondary-300;
   }
+
+  /* ファンタジーカード */
+  .card-fantasy {
+    @apply bg-fantasy-cream/90 backdrop-blur-sm rounded-fantasy p-6;
+    @apply border-4 border-board-wood/30 shadow-fantasy;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(149, 213, 178, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(224, 231, 255, 0.2) 0%, transparent 50%);
+  }
+
+  /* 木製フレーム */
+  .wood-frame {
+    @apply relative rounded-xl;
+    background: linear-gradient(135deg, #A67C52 0%, #8B5A2B 50%, #5D3A1A 100%);
+    box-shadow:
+      inset 0 2px 4px rgba(255, 255, 255, 0.2),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+      0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .wood-frame::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl opacity-20;
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 2px,
+      rgba(0, 0, 0, 0.1) 4px
+    );
+  }
+
+  /* 苔テクスチャ */
+  .moss-surface {
+    background: radial-gradient(circle at 50% 50%, #40916C 0%, #2D6A4F 70%, #1B4332 100%);
+    background-size: 100% 100%;
+  }
+
+  .moss-surface::before {
+    content: '';
+    @apply absolute inset-0 opacity-30;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(149, 213, 178, 0.4) 0%, transparent 30%),
+      radial-gradient(circle at 80% 70%, rgba(149, 213, 178, 0.3) 0%, transparent 25%),
+      radial-gradient(circle at 50% 50%, rgba(64, 145, 108, 0.2) 0%, transparent 40%);
+  }
 }
 
 @layer utilities {
+  /* 魔法石グロー */
+  .stone-glow-light {
+    animation: stoneGlowLight 2s ease-in-out infinite;
+  }
+
+  .stone-glow-dark {
+    animation: stoneGlowDark 2s ease-in-out infinite;
+  }
+
+  /* レガシーグロー（互換性） */
   .stone-glow-white {
     animation: glow-white 2s ease-in-out infinite;
   }
@@ -55,6 +146,82 @@
     50% {
       box-shadow: 0 0 20px 8px rgba(100, 149, 237, 0.8);
     }
+  }
+
+  /* 魔法パーティクル */
+  .magic-sparkle {
+    @apply absolute w-2 h-2 rounded-full bg-sky-star;
+    animation: sparkle 1.5s ease-in-out infinite;
+  }
+
+  /* 紙テクスチャオーバーレイ */
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+
+  /* フローティングアニメーション */
+  .animate-float-slow {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-fast {
+    animation: float 2s ease-in-out infinite;
+  }
+}
+
+/* カスタムアニメーション */
+@keyframes stoneGlowLight {
+  0%, 100% {
+    box-shadow:
+      0 0 8px 4px rgba(255, 230, 109, 0.4),
+      0 4px 12px rgba(255, 230, 109, 0.3),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px 10px rgba(255, 230, 109, 0.7),
+      0 4px 20px rgba(255, 230, 109, 0.5),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes stoneGlowDark {
+  0%, 100% {
+    box-shadow:
+      0 0 8px 4px rgba(92, 107, 192, 0.4),
+      0 4px 12px rgba(92, 107, 192, 0.3),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px 10px rgba(92, 107, 192, 0.7),
+      0 4px 20px rgba(92, 107, 192, 0.5),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
   }
 }
 

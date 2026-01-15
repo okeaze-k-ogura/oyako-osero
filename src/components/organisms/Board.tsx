@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import { useGameStore } from '@/stores/gameStore'
 import Cell from '@/components/atoms/Cell'
 import Stone from '@/components/atoms/Stone'
@@ -74,7 +75,7 @@ const Board = memo(function Board() {
       setFlippingSet(new Set())
       setNewStoneKey(null)
       completeTurnSwitch()
-    }, (maxDelay + 1) * 100 + 300)
+    }, (maxDelay + 1) * 100 + 400)
     timeouts.push(switchTimeoutId)
 
     return () => {
@@ -94,43 +95,105 @@ const Board = memo(function Board() {
   )
 
   return (
-    <div className="w-full h-full bg-board-green-dark rounded-lg shadow-lg overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, type: 'spring' }}
+      className="relative"
+    >
+      {/* 木製フレーム */}
       <div
-        className="w-full h-full grid"
+        className="absolute -inset-3 rounded-xl"
         style={{
-          gridTemplateColumns: `repeat(${BOARD_SIZE}, 1fr)`,
-          gridTemplateRows: `repeat(${BOARD_SIZE}, 1fr)`,
+          background: 'linear-gradient(135deg, #A67C52 0%, #8B5A2B 30%, #5D3A1A 100%)',
+          boxShadow: `
+            inset 0 2px 4px rgba(255, 255, 255, 0.2),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+            0 8px 24px rgba(0, 0, 0, 0.4),
+            0 4px 8px rgba(0, 0, 0, 0.2)
+          `,
         }}
       >
-        {Array.from({ length: BOARD_SIZE }).map((_, row) =>
-          Array.from({ length: BOARD_SIZE }).map((_, col) => {
-            const cell = board[row][col]
-            const canPlace = isValidMove(row, col)
-            const isNewStone = newStoneKey === posKey(row, col)
-            const isCurrentGlowing = cell === currentPlayer
+        {/* 木目テクスチャ */}
+        <div
+          className="absolute inset-0 rounded-xl opacity-20"
+          style={{
+            backgroundImage: `
+              repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 3px,
+                rgba(0, 0, 0, 0.1) 3px,
+                rgba(0, 0, 0, 0.1) 6px
+              )
+            `,
+          }}
+        />
 
-            return (
-              <Cell
-                key={posKey(row, col)}
-                isClickable={canPlace}
-                onClick={() => handleCellClick(row, col)}
-              >
-                {cell ? (
-                  <Stone
-                    color={cell}
-                    isGlowing={isCurrentGlowing}
-                    isFlipping={isFlipping(row, col)}
-                    isNew={isNewStone}
-                  />
-                ) : canPlace ? (
-                  <Stone color={currentPlayer!} isPlaceable isHint={isHintCell(row, col)} />
-                ) : null}
-              </Cell>
-            )
-          })
-        )}
+        {/* 角の金属装飾 */}
+        {[
+          { top: '6px', left: '6px' },
+          { top: '6px', right: '6px' },
+          { bottom: '6px', left: '6px' },
+          { bottom: '6px', right: '6px' },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute w-4 h-4 rounded-full"
+            style={{
+              ...pos,
+              background: 'radial-gradient(circle at 30% 30%, #FFD700 0%, #B8860B 100%)',
+              boxShadow: 'inset 0 -2px 4px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.2)',
+            }}
+          />
+        ))}
       </div>
-    </div>
+
+      {/* ボード本体 */}
+      <div
+        className="relative w-full h-full rounded-lg overflow-hidden"
+        style={{
+          background: '#1B4332',
+          boxShadow: 'inset 0 0 20px rgba(0, 0, 0, 0.5)',
+        }}
+      >
+        <div
+          className="w-full h-full grid gap-[1px] p-[2px]"
+          style={{
+            gridTemplateColumns: `repeat(${BOARD_SIZE}, 1fr)`,
+            gridTemplateRows: `repeat(${BOARD_SIZE}, 1fr)`,
+          }}
+        >
+          {Array.from({ length: BOARD_SIZE }).map((_, row) =>
+            Array.from({ length: BOARD_SIZE }).map((_, col) => {
+              const cell = board[row][col]
+              const canPlace = isValidMove(row, col)
+              const isNewStone = newStoneKey === posKey(row, col)
+              const isCurrentGlowing = cell === currentPlayer
+
+              return (
+                <Cell
+                  key={posKey(row, col)}
+                  isClickable={canPlace}
+                  onClick={() => handleCellClick(row, col)}
+                >
+                  {cell ? (
+                    <Stone
+                      color={cell}
+                      isGlowing={isCurrentGlowing}
+                      isFlipping={isFlipping(row, col)}
+                      isNew={isNewStone}
+                    />
+                  ) : canPlace ? (
+                    <Stone color={currentPlayer!} isPlaceable isHint={isHintCell(row, col)} />
+                  ) : null}
+                </Cell>
+              )
+            })
+          )}
+        </div>
+      </div>
+    </motion.div>
   )
 })
 
