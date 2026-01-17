@@ -1,9 +1,11 @@
-import { memo } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useGameStore } from '@/stores/gameStore'
+import { usePWAStore } from '@/stores/pwaStore'
 import { CHARACTERS, PRONOUNS } from '@/lib/characters'
 import { FantasyBackground } from '@/components/atoms/FantasyBackground'
 import Confetti from '@/components/organisms/Confetti'
+import InstallPrompt from '@/components/organisms/InstallPrompt'
 
 const ResultPage = memo(function ResultPage() {
   const winner = useGameStore((state) => state.winner)
@@ -14,6 +16,34 @@ const ResultPage = memo(function ResultPage() {
   const childColor = useGameStore((state) => state.childColor)
   const resetGame = useGameStore((state) => state.resetGame)
   const goToCharacterSelect = useGameStore((state) => state.goToCharacterSelect)
+  const gameCompletedCount = useGameStore((state) => state.gameCompletedCount)
+  const incrementGameCompletedCount = useGameStore(
+    (state) => state.incrementGameCompletedCount
+  )
+
+  const shouldShowPrompt = usePWAStore((state) => state.shouldShowPrompt)
+  const openInstallPrompt = usePWAStore((state) => state.openInstallPrompt)
+
+  // Increment game completed count on mount (once per result page visit)
+  const hasIncremented = useRef(false)
+  useEffect(() => {
+    if (!hasIncremented.current) {
+      incrementGameCompletedCount()
+      hasIncremented.current = true
+    }
+  }, [incrementGameCompletedCount])
+
+  // Show install prompt after a short delay if conditions are met
+  useEffect(() => {
+    // Use gameCompletedCount + 1 because the increment happens in the same render
+    const newCount = gameCompletedCount + 1
+    if (shouldShowPrompt(newCount)) {
+      const timer = setTimeout(() => {
+        openInstallPrompt()
+      }, 1500)
+      return () => clearTimeout(timer)
+    }
+  }, [gameCompletedCount, shouldShowPrompt, openInstallPrompt])
 
   if (!opponentCharacter || !childPronoun) return null
 
@@ -233,6 +263,8 @@ const ResultPage = memo(function ResultPage() {
           </motion.div>
         </motion.div>
       </div>
+
+      <InstallPrompt />
     </>
   )
 })

@@ -17,15 +17,15 @@
 
     <!-- 基本SEO -->
     <meta name="description" content="オセロの無料ゲーム。ブラウザで今すぐ一人でプレイ可能。かわいい動物キャラクターと対戦しながら子どもがオセロを学べる知育ゲーム。4歳から8歳向け。ダウンロード不要。" />
-    <meta name="keywords" content="オセロ,無料,ゲーム,一人,子供,親子,リバーシ,知育,ボードゲーム,ブラウザ" />
+    <meta name="keywords" content="オセロ,オセロゲーム,無料,一人,webオセロ,オンライン,リバーシ,子供,親子,知育,ブラウザゲーム" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="おやこオセロ" />
     <meta name="format-detection" content="telephone=no" />
     <link rel="canonical" href="https://www.oyako-osero.com/" />
 
     <!-- OGP -->
-    <meta property="og:title" content="オセロ 無料ゲーム｜おやこオセロ" />
-    <meta property="og:description" content="ブラウザで今すぐ無料プレイ！親子で楽しめるオセロゲーム。かわいい動物キャラクターと対戦しよう" />
+    <meta property="og:title" content="オセロ 無料ゲーム｜おやこオセロ - 親子で楽しめるブラウザゲーム" />
+    <meta property="og:description" content="オセロの無料ゲーム。ブラウザで今すぐ一人でプレイ可能。かわいい動物キャラクターと対戦しながら子どもがオセロを学べる知育ゲーム。4歳から8歳向け。ダウンロード不要。" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.oyako-osero.com/" />
     <meta property="og:image" content="https://www.oyako-osero.com/ogp.jpg?v=3" />
@@ -37,32 +37,102 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="オセロ 無料ゲーム｜おやこオセロ" />
-    <meta name="twitter:description" content="ブラウザで今すぐ無料プレイ！親子で楽しめるオセロゲーム" />
+    <meta name="twitter:title" content="オセロ 無料ゲーム｜おやこオセロ - 親子で楽しめるブラウザゲーム" />
+    <meta name="twitter:description" content="オセロの無料ゲーム。ブラウザで今すぐ一人でプレイ可能。かわいい動物キャラクターと対戦しながら子どもがオセロを学べる知育ゲーム。4歳から8歳向け。ダウンロード不要。" />
     <meta name="twitter:image" content="https://www.oyako-osero.com/ogp.jpg?v=3" />
 
-    <!-- 構造化データ -->
+    <!-- 構造化データ: WebApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "おやこオセロ",
-      "alternateName": "オセロ 無料ゲーム",
-      "description": "親子で楽しめる無料オセロゲーム。ブラウザで今すぐ一人でプレイ可能。",
+      "alternateName": ["オセロ 無料ゲーム", "webオセロ", "オンラインオセロ"],
+      "description": "オセロの無料ゲーム。ブラウザで今すぐ一人でプレイ可能。かわいい動物キャラクターと対戦しながら子どもがオセロを学べる知育ゲーム。4歳から8歳向け。ダウンロード不要。",
       "url": "https://www.oyako-osero.com/",
       "applicationCategory": "GameApplication",
+      "applicationSubCategory": "BoardGame",
       "operatingSystem": "Web Browser",
       "browserRequirements": "Requires JavaScript",
       "inLanguage": "ja",
+      "isAccessibleForFree": true,
+      "isFamilyFriendly": true,
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Children",
+        "suggestedMinAge": 4,
+        "suggestedMaxAge": 8
+      },
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "JPY"
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
       },
       "author": {
         "@type": "Organization",
-        "name": "おやこオセロ"
-      }
+        "name": "おやこオセロ",
+        "url": "https://www.oyako-osero.com/"
+      },
+      "keywords": "オセロ,無料,ゲーム,一人,web,オンライン,リバーシ,子供,知育"
+    }
+    </script>
+
+    <!-- 構造化データ: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "おやこオセロは無料で遊べますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、完全無料で遊べます。ダウンロードやユーザー登録も不要で、ブラウザから今すぐプレイできます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "何歳から遊べますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "4歳から8歳のお子様向けに設計されています。かわいい動物キャラクターと対戦しながら、楽しくオセロのルールを学べます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "スマートフォンでも遊べますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、スマートフォン、タブレット、パソコンなど、どのデバイスのブラウザでも遊べます。アプリのインストールは不要です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "オフラインでも遊べますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、PWA対応により一度アクセスすれば、インターネット接続がない環境でもプレイ可能です。"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 構造化データ: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://www.oyako-osero.com/"
+        }
+      ]
     }
     </script>
 
